@@ -17,16 +17,24 @@ jobs:
         with:
           repository: ${{ github.event.inputs.repo_to_clone }}
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-      # - name: KICS Github Action
-      #   uses: Checkmarx/kics-github-action@v1.7.0
-      #   with:
-      #     # path to file or directory to scan
-      #     path:
-      #     # file path to store result in json format
-      #     output_path: # optional
-      #     # file path to store source internal representation in JSON format
-      #     payload_path: # optional
-      #     # path to directory with queries (default "./assets/queries")
-      #     queries: # optional
-      #     # verbose scan
-      #     verbose: # optional
+          path: ./kics
+      - name: Mkdir results-dir
+      # make sure results dir is created
+        run: mkdir -p ./kics/myResults
+      - name: KICS Github Action
+        uses: Checkmarx/kics-github-action@v1.7.0
+        with:
+          # path to file or directory to scan
+          path: ./kics
+          # file path to store result in json format
+          output_path: myResults
+          # file path to store source internal representation in JSON format
+          payload_path: # optional
+          # path to directory with queries (default "./assets/queries")
+          queries: # optional
+          # verbose scan
+          verbose: # optional
+      # Display the results in json format
+      - name: Display kics results
+        run: |
+         find ./kics/myResults
