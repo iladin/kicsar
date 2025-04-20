@@ -28,6 +28,10 @@ jobs:
           path: ./${{ github.event.inputs.repo_to_clone }}
           # file path to store result in json format
           output_path: myResults
+          # Add in html report
+          output_formats: 'json,sarif,html'
+          # defines which non-zero exit codes should be ignored (all, results, errors, none)
+          ignore_on_exit: results
           # file path to store source internal representation in JSON format
           payload_path: # optional
           # path to directory with queries (default "./assets/queries")
