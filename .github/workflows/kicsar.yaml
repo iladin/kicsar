@@ -37,6 +37,7 @@ jobs:
           queries: # optional
           # verbose scan
           verbose: # optional
+      - run: find ./${{ github.event.inputs.repo_to_clone }}/myResults -type f # -name "*.json" -exec jq -c . {} \; > ./${{ github.event.inputs.repo_to_clone }}/myResults/results.json
       - name: Upload KICS SARIF report
         uses: github/codeql-action/upload-sarif@45775bd8235c68ba998cffa5171334d58593da47
         with:
