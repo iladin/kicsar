@@ -40,10 +40,10 @@ jobs:
       - name: Upload KICS SARIF report
         uses: github/codeql-action/upload-sarif@45775bd8235c68ba998cffa5171334d58593da47
         with:
-          sarif_file: ./${{ github.event.inputs.repo_to_clone }}/results.sarif
+          sarif_file: ./${{ github.event.inputs.repo_to_clone }}/myResults/results.sarif
 
       - name: Upload KICS HTML report
         uses: actions/upload-artifact@v4
         with:
           name: kics-html-report
-          path: ./${{ github.event.inputs.repo_to_clone }}/results.html
+          path: ./${{ github.event.inputs.repo_to_clone }}/myResults/results.html
